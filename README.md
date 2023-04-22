@@ -1,108 +1,108 @@
 ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
-Welcome USER_NAME,
+Welcome zemaciel,
 
 This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
 
 You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
 
-## Gitpod Reminders
+# Database Management
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+!(https://gitpod.io/static/media/gitpod.a7ab6752.svg)[https://gitpod.io/static/media/gitpod.a7ab6752.svg]
+Use GitPod
 
-`python3 -m http.server`
+## **What is PostgreSQL?**
 
-A blue button should appear to click: _Make Public_,
+**What is it?**
+A free, open source relational database management system.
+**What does it do?**
+Postgres has powerful features and acts as a primary database for many web and mobile applications.
+**How do you use it?**
+The Postgres server runs as a service on most operating systems, and can be used from the command line, through graphical clients, or directly from your own applications.
 
-Another blue button should appear to click: _Open Browser_.
+# Important!
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+## Error fix due to Gitpod change
 
-A blue button should appear to click: _Make Public_,
+**If you get the following error after typing `psql` in the terminal:**
 
-Another blue button should appear to click: _Open Browser_.
+**`psql: error: could not connect to server: No such file or directory`**
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+**Please use the following command in the terminal to set an environment variable needed for it to work:**
 
-To log into the Heroku toolbelt CLI:
+**`set_pg`**
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+**And then try the `psql` command again**
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+**You will need to do this each time you return to your Gitpod workspace for the Database Management Systems videos.**
 
-------
+## **PostgreSQL**
 
-## Release History
+If you recall from our previous lessons, when working with data, you can choose between
+relational and non-relational databases.
+However, going a bit deeper into **relational databases**, Postgres is an object-relational
+database, whereas MySQL is purely a standard relational database.
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+### **PostgreSQL**
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+- Object Relational Database
+- Case-sensitive
+- Natively supports multiple programming languages, including Python and JavaScript
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+### MySQL
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+- Standard Relational Database
+- Not case-sensitive
+- Limited support with other programming languages
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+## The learning outcomes for the following lessons will include:
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+- Learning how to use Postgres in its native form through the command-line interface.
+- Using helpful Python adapters to perform those same queries.
+- And finally, how to execute our queries programmatically from within our Python files.
+- End of transcript. Skip to the start.
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+## Installing the Chinook database
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+What is it?
+A series of SQL commands in a text file.
+What does it do?
+Allows us to script database operations, such as creating, populating, and updating databases.
+How do you use it?
+Put database commands in a .sql file, and run them using the Postgres command line interface.
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+**Extra Links:**
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
-
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
-
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
-
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
-
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
-
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
-
-------
-
-## FAQ about the uptime script
-
-**Why have you added this script?**
-
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
-
-**How will this affect me?**
-
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
-
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
-
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
-
-**So….?**
-
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
-
-**Can I opt out?**
-
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
+[Code Institute Gitpod Template](https://github.com/code-institute-org/gitpod-full-template) (**Important:** You must use this Gitpod Template to complete this module)[Chinook Database SQL](https://github.com/lerocha/chinook-database/blob/master/ChinookDatabase/DataSources/Chinook_PostgreSql.sql)
 
 ```
-pkill uptime.sh
-rm .vscode/uptime.sh
+wget https://raw.githubusercontent.com/lerocha/chinook-database/master/ChinookDatabase/DataSources/Chinook_PostgreSql.sql
 ```
 
-**Anything more?**
+[Source Code Repo](https://github.com/Code-Institute-Solutions/postgresql-and-python/tree/main/01_installing_the_chinook_database)
 
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
+[****COMMANDS.md****](https://www.notion.so/COMMANDS-md-bd786dbd3e094c929407268a570699c4)
 
----
-
-Happy coding!
+1. Create a new repository and used the following code on the terminal to get the sample data base:  `wget https://raw.githubusercontent.com/lerocha/chinook-database/master/ChinookDatabase/DataSources/Chinook_PostgreSql.sql`
+2. A new file called `Chinook_PostgreSql.sql` is created.
+3. Next, we need to start the Postgres command-line interface, or shell, in order to get the Chinook database installed, and the data populated. To launch the Postgres CLI, we can simply type "`psql`" and hit enter.
+4. To view, or list any database in our enviromenment type `\l`  (backslash+L)
+    
+    ![Screenshot 2023-04-22 at 09.39.21.png](readme/01deafult_databases.png)
+    
+5. By default PostgreSQL has three databases out-of-the-box:
+`postgres
+template0
+template1`
+6. **Create a new database** Instead of using any of these default databases, let's create a new database for our Chinook lessons. `CREATE DATABASE chinook;` **Don't forget the semicolon at the end of the command.**
+7. To change between databases use `\c databasename`
+example: `\c postgres` 
+`\c chinook`
+8. The `\c` (*backslash C stands)* for **connect**, telling to which database you want to connect. 
+9. Finally, while we're connected to our new chinook database, we need to **initialise** or
+**install** the downloaded sample Chinook PostgreSQL database.
+Type: `\i Chinook_PostgreSql.sql`  (CASE SENSITIVE!)
+The `\i` generally means include, integrate, **install, or initialise**.
+*Essentially, this file is an SQL script that contains all of the instructions needed to
+create tables, and populate our database with information so that we have useful data for practice.*
+10.
