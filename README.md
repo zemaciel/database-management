@@ -105,4 +105,41 @@ Type: `\i Chinook_PostgreSql.sql`  (CASE SENSITIVE!)
 The `\i` generally means include, integrate, **install, or initialise**.
 *Essentially, this file is an SQL script that contains all of the instructions needed to
 create tables, and populate our database with information so that we have useful data for practice.*
-10.
+
+
+
+## PostgreSQL from the command line
+
+What is it?
+The Postgres server running on a command line terminal
+What does it do?
+Provides access to Postgres via the command line in an IDE.
+How do you use it?
+Use the command line to run scripts; create, query, and update databases.
+
+![02-chinook.png](readme/02-chinook.png)
+
+1. After the database is install, you should see the line : `chinook=#`
+2. You may Type `\q` to exit or quite the PostGreCLI, simullating a time out or restart. 
+3. To start the Database and connect to Chinook database, type: `psql -d chinook`
+-d flag is used to specify the database
+4. To check if the tables and data were successfully added to the database, type 
+`\dt` . This will allow us to display tables on our database.
+
+![03-table.png](readme/03-table.png)
+
+### A few examples of how to query the data using basic SQL commands.
+
+> It's standard practice to write SQL commands in capital letters 
+* asterisk means to select anything and everything
+Use double straight quotes (`"`)
+Always finish command in semicolon
+> 
+- Retrieving all data from the Artist table: `SELECT * FROM "Artist";`
+- Exit the list: Type `q`.  (Not \q)
+- Select Name from Artist:  `SELECT "Name" FROM "Artist";`
+- Specify a particular artist name using the **WHERE** clause.
+When it comes to the specific value I'd like to search you must use **single-quotes**.
+`SELECT * FROM "Artis" WHERE "Name" = 'Queen';` 
+If the value is a primary key and integer, we don't need the single-quotes, but it will
+still work if you include them: `SELECT * FROM "Artist" WHERE "ArtistId" = 51;`
