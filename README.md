@@ -8,7 +8,7 @@ You can safely delete this README.md file, or change it for your own project. Pl
 
 # Database Management
 
-!(Use GitPod)[readme/git.jpg]
+    !(Use GitPod)[readme/git.jpg]
 
 
 ## **What is PostgreSQL?**
@@ -206,4 +206,90 @@ Run file:
 
 ```python
 python3 **sql-psycopg2.py**
+```
+
+
+# Running basic queries (SQLAlchemy)
+
+WHAT IS IT?
+SQLAlchemy's middle abstraction layer, the Expression Language.
+WHAT DOES IT DO?
+Simplifies queries to the database using tables.
+HOW DO YOU USE IT?
+Connect Python and the SQLAlchemy library to the database, using cleaner code.
+
+INSTALL : **`pip3 install sqlalchemy==1.4.46`**
+
+- Create a new file called [sql-expression.py](http://sql-expression.py) `touch sql-expression.py`
+- Import componentes:
+
+```python
+from sqlalchemy import (
+    create_engine, Table, Column, Float, ForeignKey, Integer, String, MetaData
+)
+```
+
+- **Link** python file to chinook database:
+
+```python
+# executing the instructions from our localhost "chinook" db
+db = create_engine("postgresql:///chinook")
+```
+
+The three slashes signifies that our database is hosted locally within our workspace environment. 
+
+- After our engine is created, and connected to our database, we need to use the MetaData
+class, which we can save to a variable name of 'meta'. The MetaData class will contain a collection of our table objects, and the associated data within those objects.
+
+```python
+meta = MetaData(db)
+```
+
+The MetaData class will contain a collection of our table objects, and the associated data within those objects.
+
+- **Connect** to the database, using the .connect() method, and the Python with-statement
+
+```python
+# making the connection
+with db.connect() as connection:
+```
+
+Before we start to query the database, we need to construct our tables, so that Python
+knows the schema that we're working with. Sometimes you'll hear this referred to as data models, 
+
+### Tables
+
+For the purposes of this video, we will continue with tradition, and perform the **same six queries** from Chinook that we've done previously.
+Our first table class, or model, will be for the Artist table, which I'll assign to the variable of 'artist_table'.
+Using the **Table import, we need to specify the name of our table, and provide the meta schema.**
+
+```python
+# create variable for "Artist" table
+artist_table = Table(
+    "Artist", meta,
+    Column("ArtistId", Integer, primary_key=True),
+    Column("Name", String)
+)
+
+# create variable for "Album" table
+album_table = Table(
+    "Album", meta,
+    Column("AlbumId", Integer, primary_key=True),
+    Column("Title", String),
+    Column("ArtistId", Integer, ForeignKey("artist_table.ArtistId"))
+)
+
+# create variable for "Track" table
+track_table = Table(
+    "Track", meta,
+    Column("TrackId", Integer, primary_key=True),
+    Column("Name", String),
+    Column("AlbumId", Integer, ForeignKey("album_table.AlbumId")),
+    Column("MediaTypeId", Integer, primary_key=False),
+    Column("GenreId", Integer, primary_key=False),
+    Column("Composer", String),
+    Column("Milliseconds", Integer),
+    Column("Bytes", Integer),
+    Column("UnitPrice", Float)
+)
 ```
