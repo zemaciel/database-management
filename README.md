@@ -8,8 +8,8 @@ You can safely delete this README.md file, or change it for your own project. Pl
 
 # Database Management
 
-!(https://gitpod.io/static/media/gitpod.a7ab6752.svg)[https://gitpod.io/static/media/gitpod.a7ab6752.svg]
-Use GitPod
+!(Use GitPod)[readme/git.jpg]
+
 
 ## **What is PostgreSQL?**
 
@@ -107,7 +107,6 @@ The `\i` generally means include, integrate, **install, or initialise**.
 create tables, and populate our database with information so that we have useful data for practice.*
 
 
-
 ## PostgreSQL from the command line
 
 What is it?
@@ -143,3 +142,68 @@ When it comes to the specific value I'd like to search you must use **single-quo
 `SELECT * FROM "Artis" WHERE "Name" = 'Queen';` 
 If the value is a primary key and integer, we don't need the single-quotes, but it will
 still work if you include them: `SELECT * FROM "Artist" WHERE "ArtistId" = 51;`
+
+
+# Installing the libraries & setting up
+
+WHAT IS IT?
+A Python package and data adapter called psycopg2.
+WHAT DOES IT DO?
+Run Postgres commands from Python code, instead of the CLI.
+HOW DO YOU USE IT?
+Use the psycopg2 library and it's inbuilt methods.
+
+## psycopg2
+
+- Data Base Adapter
+- Connects Python to Postgres
+- Install it by typing pip3 install psycopg2
+
+Once that's installed, we're going to use its built-in API to access our Chinook database,
+and we'll do that by using a Python file, not the CLI this time.
+Let's create a new Python file using the "touch" command, and call it '[sql-psycopg2.py](http://sql-psycopg2.py/)', then
+open it up for editing.
+
+```html
+touch sql-psycopg2.py
+```
+
+### Editing the new file sql-psycopg2.py
+
+- DO NOT call your file [psycopg2.py](http://psycopg2.py/), as this is a default file already used by the package
+- The very first thing that we need to do , is to 'import psycopg2' at the top of our file.
+- Then, we need to have psycopg2 **connect** to our Postgres database called Chinook, using
+the .**connect() method**, and we'll assign that to a variable of '**connection**'.
+- We are only specifying the name of our database, "chinook", in double-quotes, but you could
+include additional connection values such as host, username, password, and so on.
+- Next, our connection needs an instance of a **Cursor Object.**
+A cursor object is another way of saying a 'set' or 'list', similar to an 'array' in JavaScript.
+Essentially, anything that we query from the database will become part of this cursor object,
+and to read that data, we should iterate over the cursor using a for-loop, as an example.
+- Before we start to query the database, we need to set up a way for our data to be retrieved,
+or fetched, from the cursor.
+I'm going to assign this to a variable of '**results**' since it'll fetch any result that gets queried.
+Please note, if we need to query multiple records from our database, we should use the
+.`fetchall()` method.
+Otherwise, if we're intentionally looking for one particular record, we could use the
+`.fetchone()` method.
+- Next, once our results have been fetched, we need to end the connection to the database,
+so the connection isn't always persistent.
+As previously mentioned, our data sits within a cursor object, similar to an array, so in order to retrieve each record individually, we need to iterate over the results using a for-loop.
+For each individual result in the results list, print the result.
+- Now that we have our Python file setup, we can start to query the Chinook database to retrieve data.
+- **Query #1** is to simply select all records from the "Artist" table.
+- PsycoPG2 commands are actually quite similar to native SQL commands, with one little twist;
+the precise use of quotations. It's extremely important to note that we absolutely must use single-quotes to wrap our query, and double-quotes to specify particular values.
+
+Note that the sintex for queries is different than the CLI: 
+
+```python
+cursor.execute('SELECT * FROM "Artist"')
+```
+
+Run file:
+
+```python
+python3 **sql-psycopg2.py**
+```
