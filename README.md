@@ -300,8 +300,58 @@ Recreate the database:
 CREATE DATABASE chinook; 
 \c chinook
 \i Chinook_PostgreSql.sql
-````
+```
 And run code: pip install psycopg2-binary
 
 
 # Code-Along 1: Create and Read
+
+### Create a class-based model for the "Programmer" table
+```
+class Programmer(base):
+    __tablename__ = "Programmer"
+    id = Column(Integer, primary_key=True)
+    first_name = Column(String)
+    last_name = Column(String)
+    gender = Column(String)
+    nationality = Column(String)
+    famous_for = Column(String)
+```
+### Create new record
+```
+ada_lovelace = Programmer(
+    first_name="Ada",
+    last_name="Lovelace",
+    gender="F",
+    nationality="British",
+    famous_for="First Programmer"
+)
+```
+
+### Add each instance of our programmers to our session
+```
+session.add(ada_lovelace)
+```
+### Commit our session to the database
+ ```
+ session.commit()
+ ```
+
+ ### updating a single record
+```
+ programmer = session.query(Programmer).filter_by(id=7).first()
+programmer.famous_for = "World President"
+session.commit()
+```
+### updating multiple records
+```
+people = session.query(Programmer)
+for person in people: 
+    if person.gender == "F":
+        person.gender = "Female"
+    elif person.gender == "M":
+        person.gender = "Male"
+    else: 
+        print("Gender not defined")
+    session.commit()
+    ```
