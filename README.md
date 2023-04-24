@@ -293,3 +293,15 @@ track_table = Table(
     Column("UnitPrice", Float)
 )
 ```
+
+## Bug on lesson "Introduction class-base mode"
+Recreate the database: 
+```
+CREATE DATABASE chinook; 
+\c chinook
+\i Chinook_PostgreSql.sql
+````
+And run code: pip install psycopg2-binary
+
+
+# Code-Along 1: Create and Read
